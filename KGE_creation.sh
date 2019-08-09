@@ -107,8 +107,8 @@ sed -i '' -e 's/"//g' $TARGETDIR/*_lc.txt
 sed -i '' -e '/http:\/\//d' $TARGETDIR/*_lc.txt
 sed -i '' -e '/%3f/d' $TARGETDIR/*_lc.txt
 sed -i '' -e '/%/d' $TARGETDIR/*_lc.txt
-awk '{printf "__label__"$1" "; for(i=2;i<=NF;i++){printf $i" "}print ""}' <$TARGETDIR/labels_de_lc.txt > $TARGETDIR/labels_de_lc_new.txt
+awk '{printf "__label__"$1" "; for(i=2;i<=NF;i++){printf $i" "}print ""}' <$TARGETDIR/labels_'$TARGETDIR'_lc.txt > $TARGETDIR/labels_'$TARGETDIR'_lc_new.txt
 rm -rf $TARGETDIR/labels_"$TARGETDIR"_lc.txt
-awk 'FNR==1{print ""}{print}' $TARGETDIR/* > $TARGETDIR/all_de_.txt
+awk 'FNR==1{print ""}{print}' $TARGETDIR/* > $TARGETDIR/all_'$TARGETDIR'_.txt
 
 ./fastText-0.9.1/fasttext supervised -input $TARGETDIR/all_"$TARGETDIR"_.txt -output $TARGETDIR/all_'$TARGETDIR'_model -minn 2 -maxn 5 -dim 500 -thread 12 -ws 50 -loss hs
