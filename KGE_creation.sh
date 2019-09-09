@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 
-SOURCEDIR="$1"
+SOURCEDIR="KGE/$1"
 #TARGETDIR="$2"
 
 if [ ! -d "$SOURCEDIR" ]; then
-  mkdir $SOURCEDIR
+  mkdir -p $SOURCEDIR
 fi
 
 
@@ -21,10 +21,7 @@ fi
 if [ ! -f "$SOURCEDIR/mappingbased_objects_$1.ttl" ]; then
 	wget http://downloads.dbpedia.org/2016-10/core-i18n/"$1"/mappingbased_objects_"$1".ttl.bz2 ;
 fi
-if [ ! -f "$SOURCEDIR/labels_$1.ttl" ]; then
-	wget http://downloads.dbpedia.org/2016-10/core-i18n/"$1"/labels_"$1".ttl.bz2;
-fi
-if [ -f "labels_"$1".ttl.bz2" ] ; then
+if [ -f "mappingbased_objects_$1.ttl.bz2" ] ; then
 	bzip2 -d *.bz2;
 	mv *.ttl $SOURCEDIR
 fi
@@ -43,12 +40,11 @@ cd ..
 
 echo "Parsing the files";
 
-tr "A-Z" "a-z" < $SOURCEDIR/instance_types_"$SOURCEDIR".ttl > $SOURCEDIR/instance_types_"$SOURCEDIR"_lc.txt
-tr "A-Z" "a-z" < $SOURCEDIR/labels_"$SOURCEDIR".ttl > $SOURCEDIR/labels_"$SOURCEDIR"_lc.txt
-tr "A-Z" "a-z" < $SOURCEDIR/mappingbased_objects_"$SOURCEDIR".ttl > $SOURCEDIR/mappingbased_objects_"$SOURCEDIR"_lc.txt
+tr "A-Z" "a-z" < $SOURCEDIR/instance_types_"$1".ttl > $SOURCEDIR/instance_types_"$1"_lc.txt
+tr "A-Z" "a-z" < $SOURCEDIR/mappingbased_objects_"$1".ttl > $SOURCEDIR/mappingbased_objects_"$1"_lc.txt
 
 
-if [ ! -f "$SOURCEDIR/all_"$SOURCEDIR"_.txt" ]; then
+if [ ! -f "$SOURCEDIR/all_"$1"_.txt" ]; then
 	sed -i '' -e '/http/!d' $SOURCEDIR/*_lc.txt
 	sed -i '' -e 's/<http:\/\/..\.dbpedia.org\/resource\//dbr_/g' $SOURCEDIR/*_lc.txt
 	sed -i '' -e 's/<http:\/\/www.w3.org\/2000\/01\/rdf-schema#/rdfs_/g' $SOURCEDIR/*_lc.txt
@@ -73,11 +69,9 @@ if [ ! -f "$SOURCEDIR/all_"$SOURCEDIR"_.txt" ]; then
 	sed -i '' -e 's/"//g' $SOURCEDIR/*_lc.txt
 	sed -i '' -e '/%3f/d' $SOURCEDIR/*_lc.txt
 	sed -i '' -e '/%/d' $SOURCEDIR/*_lc.txt
-	awk '{printf "__label__"$1" "; for(i=2;i<=NF;i++){printf $i" "}print ""}' <$SOURCEDIR/labels_"$SOURCEDIR"_lc.txt > $SOURCEDIR/labels_"$SOURCEDIR"_new_lc.txt
-	rm -rf $SOURCEDIR/labels_"$SOURCEDIR"_lc.txt
-	awk 'FNR==1{print ""}{print}' $SOURCEDIR/*_lc.txt > $SOURCEDIR/all_"$SOURCEDIR"_.txt
+	awk 'FNR==1{print ""}{print}' $SOURCEDIR/*_lc.txt > $SOURCEDIR/all_"$1"_.txt
 fi
 
-if [ ! -f "$SOURCEDIR/all_"$SOURCEDIR"_model" ]; then
-	./fastText-0.9.1/fasttext supervised -input $SOURCEDIR/all_"$SOURCEDIR"_.txt -output $SOURCEDIR/all_"$SOURCEDIR"_model -minn 2 -maxn 5 -dim 500 -thread 1 -ws 50 -loss hs 
+if [ ! -f "$SOURCEDIR/all_"$1"_model" ]; then
+	./fastText-0.9.1/fasttext cbow -input $SOURCEDIR/all_"$1"_.txt -output $SOURCEDIR/all_"$1"_model -dim 500 -thread 1 -ws 50 -loss hs 
 fi
