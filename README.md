@@ -19,7 +19,6 @@ Please first run
 If you want to run the first strategy of KG-NMT which relies on the use of Knowledge Graph embeddigns with Entity Link task, you should run
 ```
 1. ./kg-nmt_KGE+EL_workflow.sh
-2. ./kg-nmt_SemKGE_workflow.sh
 ```
 
 In case you want to run the second strategy of KG-NMT which relies on the use of Knowledge Graph embeddigns enriched with textual descriptions, please run
@@ -31,10 +30,10 @@ In case you want to run the second strategy of KG-NMT which relies on the use of
 
 KG-NMT currently consists of the following modules:
 
-1. OpenNMT-py - NMT submodule component, you can change it for a tensorflow implementation
-2. fastText - responsible for creating knowledge graph embeddings, you can also change it
+1. OpenNMT-py - NMT submodule component, you can change it for a tensorflow implementation or another NMT system
+2. fastText - responsible for creating knowledge graph embeddings, you can also change it for another KGE implementation
 3. KG-NMT workflows - they are responsible for creating both strategies described in our paper
-4. Entiy Linker - the component responsible for annotating the entities in the billingual parallel corpora, you can also replace it.
+4. Entiy Linker - the component responsible for annotating the entities in the billingual parallel corpora, you can also replace for another EL system.
 
 
 ### Support and Feedback
