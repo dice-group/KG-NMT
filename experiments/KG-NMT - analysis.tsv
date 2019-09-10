@@ -1,0 +1,79 @@
+> sentence line:        12
+> comment: baselines have the verb wrong // where dbpedia/kgnmt show better long distance dependency for verbs soll-ersheinen // +att copies source text //
+> sentence line:        13
+> comment: baseline tries to translate UNK sections / follows the same pattern / baseline+DBpedia/DBpedia + att are same, but wrong preposition, KG-NMT-EL (+ att) wrong article "der" for mottorad (das), KG-NMT(_UNK) omit some information (and impounded), but sentence otherwise grammatically correct
+
+> sentence line:        51
+> comment: baselines very literal translation - with different ordering, e.g. "while seeking such privileges" vs "während diese privilegien suchen" // KG-NMT_UNK better "während sie ein solches recht beantragen" KG-NMT_UNK also better in "for the time being" = "während der zeit" vs "für die zeit" which literal translation for "for the time" - "being" omited
+
+> sentence line:        56
+> comment: both KG-NMT-EL( + att) introduce text "nicht sofort zu verurteilen sind" which does not appear in the source text, all models have problems with the idiomatic expression "plaintiffs in the suit" = more or less all models do literal translation ("anzug kläger"), both KG-NMT_UN(K) show good long distance dependency,  "ärzte aus den beiden kliniken, .. , angewandt wurde"
+
+> sentence line:        70
+> comment: DBpedia + att is good in terms of verb tense, past tense "tracked" and "verfolgt", but misses the right translation of "medical journeys" // KG-NMT_UNK uses wrong verb tense, and also cannot translate "medical journeys", baseline combines past tense "haben" with future "actions" "in den nächsten sieben jahren" ~ "in the next seven years"
+> sentence line:        87
+> comment: all models have problems translating complex gemrna compounds, "garden retail sector" -> "garteneinzelhandels" and "home ownership" -> "hauseigentümerzahlen"
+> sentence line:        104
+> comment: baselines not understandable, too many concepts and entities, DBpedia + att cannot translate "summoned"/"spaying", KG-NMT-EL in that sense better "spionage", and generates understandable translations "einen bericht über amerikanische und britische spying in der türkei zu klären", where KG-NMT_UN(K) omits the word "british"
+> sentence line:        124
+> comment: due many concepts/entities baseline cannot translate the sentence, although KG-NMT-EL and KG-NMT_UNK misinterpret the semantics of "extortion by policemen" and translate it in the meaning of "extortion of policemen" -> "erpressung von polizisten"
+> sentence line:        127
+> comment: all models literal translation of "one of the businessmen told the court" -> "einer der unternehmer sagte das gericht" // baseline+DBpedia and DBpedia + att best in "it ' s not about making money anymore" -> " geht nicht mehr darum geld zu verdienen", KG-NMT_UN(K) here less precise, omitting "making"
+> sentence line:        141
+> comment: baseline+DBpedia provides a understandable translation, missing concepts like gusts and adelaide, KG-NMT-EL does not help with adelaide // KG-NMT_UNK not as strong, although should actually be better, but understandable reordering "at the time" > "damals" + "reaching" -> "erreicht"
+
+> sentence line:        163
+> comment: baseline with a lot of UNKs, but still tries to translate everything, KG-NMT-EL (+ att) ... KG-NMT_UNK omits half of the source sentece - looks it might have problems with long sentences
+
+
+
+> sentence line:        242
+> comment:! baseline cannot translate "vehicles" OOV // baseline+DBpedia and DBpedia + att translate it correcly, but with wrong word order // KG-NMT-EL (+ att) is the closest translation, but omitting "every day" // KG-NMT_UN(K) is omitting "2000"
+
+> sentence line:        336
+> comment:! baseline( + att) make a more personal translation, whereby other models also translate it semantically right
+
+> sentence line:        344
+> comment:! all models translate it into a more generic meaning, maybe due less context
+> sentence line:        380
+> comment:! baseline+DBpedia and KG-NMT-EL and KG-NMT_UN translate "national theatre" as separate words, and not as a german compound, otherwise semantically understandable translation
+sentence line: 393
+> comment:! using external knowledge (baseline+DBpedia/KG-NMT-EL/KG-NMT_UN) improves the translation quality, "booming" -> "boomenden" can be considered as correct translation, even is it is not a perfect match with the reference
+sentence line: 438
+> comment:! baseline cannot translate "teacher", KG-NMT_UN(K) interprets "principal" as "most important" -> "der wichtigste", KG-NMT-EL( + att) interprets it correctly as a academic function, but omits "23" and generated femal gender for the "principal" which is gender neutral in English
+
+> sentence line:        442
+> comment:! KG-NMT_UN(K) translates it literary, "painting" -> "bild"; "picture" -> "bildes", which sounds very repetitive // KG-NMT-EL + att translation reads more natural since it omits "of a picture", due to the copy mechanism the proper name can be correctly reused, whereby KG-NMT_UN gets it from the KG ??
+> sentence line:        644
+> comment:! baseline woth many OOV, DBpedia + att and KG-NMT_UNK gets it right, KG-NMT-EL( + att) omits the entity "kevern"
+> entence line:        772
+> comment:! baseline+DBpedia and DBpedia + att and KG-NMT-EL( + att) mistranslate "descent" into the most dominant meaning "abstammung" ( Hereditary derivation; lineage), whereby KG-NMT_UN(K) translate this word correctly into "abstieg" (The act or an instance of descending) // all models translate "real concern" too literal, and not into the specific compound "sorgenkind"
+> sentence line:        916
+> comment:! baseline cannot translate trapped (OOV), all other models can generate a translation, but most models mistranslate the not frequent sequence "at the feet" -> "an/auf den ..."
+> sentence line:        1049
+> comment:! baseline's OOV = "training" and " ?? // NMT-EL( + att) repeats the translation of hospital "in dem krankenhaus in dem krankenhaus", but the "tunnel" is omited, KG-NMT_UN(K) translates proper name "guy's hospital" literary into "des typen"
+> sentence line:        1198
+> comment:! many OOVs for baseline due specific terms like "asbestos", "sufferers" // baseline+DBpedia improved the translation "sufferers" -> patienten // no model can translate the very specific term "mesothelioma" into "mesotheliom" as in reference
+> sentence line:        1265
+> comment:! only with DBpedia UK can be correctly generated/translated, KG-NMT_UN(K) translates it correctly into German
+> sentence line:        1274
+> comment:! although all models omit the word "against", only KG-NMT_UN(K) generated close to meaningful translation (against or negation still mossing), "agitation" was translated into most dominant meaning "unruhe" (a state of excitement, disturbance, or worry), although it should be "rufe" (the act of attempting to stir up public opinion for or against something)
+> sentence line:        1299
+> comment:! perception (OOV) in baseline, KG-NMT_UN(K) disambiguates perception into the right meaning/translation, as " The process or state of being aware of something" and not as " An interpretation or impression; an opinion or belief"
+> sentence line:        1540
+> comment:! only OOVs for baseline, whereby KG helps to translate "coastguard", but cannot resolve the concepts "ships" maybe because of plural ?? and the verb sunk
+> sentence line:        1544
+> comment:! all models except baseline produce correct translations, whereby the reference adds a word "galten" which does not appear in source
+> sentence line:        1658
+> comment:! baseline omits "for guangzhou", not even UNK ??, external knowledge adds "für guangzhou", although "twin town" can always just be copied, but not generated as "partnerstadt"
+> entence line:        1690
+> comment:! KG disambiguated/translated "cities" into a germen word, whereby "twin cities" cannot be translated correctly by any of the models - maybe due PLURAL ??
+
+> sentence line:        1707
+> comment:! low baseline translation due OOV, wherby KG without attention ?? stores/translates "amazon" correctly.
+> sentence line:        1829
+> comment:! baseline " as UNK ?? otherwise all models provide acceptable translations
+> sentence line:        1859
+> comment:! "calculus" as OOV in baseline, baseline+DBpedia translates "calculus" literally, KG-NMT-EL + att "calculus" is copied and correct regarding reference, as well as "length" is correctly translated into "dauer" // KG-NMT_UN(K) translates "length" literally as " The measurement of the extent of something along its greatest dimension" and not as correctly " The amount of time between specified moments; the duration"
+> sentence line:        1940
+> comment:! baselines introduce article "der" before "khan", KG-NMT-EL( + att) omit ", khan said .", baseline+DBpedia+att and KG-NMT_UN(K) provide acceptable translations

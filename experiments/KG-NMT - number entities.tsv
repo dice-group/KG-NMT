@@ -1,0 +1,9 @@
+	Testset		hypothesis - KGNMT		hypothesis - baseline copyM	
+	words	entities	correctly translated entities		correctly translated entities	
+newstest2015	48421	15119	12591		6372	mono emb
+newstest2016	67082	15129	11127		9069	mono emb
+newstest2017	67381	14179	10660		7310	mono emb
+newstest2018	69969	14107	13094		10129	mono emb
+icd 	5910	500	285		76	base
+ifrs	10049	2100	568		110	base
+it	22238	3000	2130		924	base

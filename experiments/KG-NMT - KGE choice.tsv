@@ -1,0 +1,29 @@
+Model	WN18			FB15K		
+	Hits@10	#Epochs	Training time (in seconds)	Hits@10	#Epochs	Training time (in seconds)
+TransE	0.936	251	2196	0.643	1000	24372
+DistMult	0.937	501	11592	0.825	551	73368
+HolE	0.944	500	14328	67.54	1500	214524
+ComplEx	0.944	551	32544	0.832	751	386388
+fastText	0.976	100	224	0.865	50	246
+						
+DBpedia (train size=10000)						
+Model	Hits@10	#Epochs	Training time (in seconds)			
+TransE	0.028	201	424.68			
+DistMult	0.016	301	489.8			
+HolE	0.0186	3000	4007.95			
+complEx	0.015	601	1707			
+fastText	0.037	100	430.2			
+DBpedia (train size=100000)						
+TransE	0.112	801	6866.93			
+DistMult	0.111	1201	8226.67			
+HolE	0.093	4000	77891			
+ComplEx	0.114	451	4119			
+fastText	0.122	100	8154.89			
+DBpedia (train size=1000000)				DistMult  has show to be the best among others, thus we used only it for this exp		
+DistMult	0.89	1701	79644.69			
+fastText	0.95	100	84657.31			
+						
+						
+						
+						
+GPU 1080i 6GB						
