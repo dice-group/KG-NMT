@@ -25,6 +25,18 @@ In case you want to run the second strategy of KG-NMT which relies on the use of
 ```
 2. ./kg-nmt_SemKGE_workflow.sh
 ```
+
+### KGE creation separately 
+
+In case you prefer to create the knowledge graph embeddings before training it along with the NMT, you can run the code below for the KGE without textual descriptions.
+```
+1. ./KGE_creation.sh language
+```
+Or the one with textual descriptions. 
+
+```
+2. ./SemKGE_creation.sh language
+```
  
 ### Structure
 
