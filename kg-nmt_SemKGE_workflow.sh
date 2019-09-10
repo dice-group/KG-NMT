@@ -20,9 +20,12 @@ python3 $OPEN_NMT_PATH/preprocess.py \
 
 # KGE 
 
+if [ ! -f "fastText-0.9.1.zip" ]; then
 ./SemKGE_creation.sh en
-
+if
+if [ ! -f "fastText-0.9.1.zip" ]; then
 ./SemKGE_creation.sh de
+fi
 
 python3 embeddings_to_torch.py -emb_file_enc KGE/$SRC_LAN/all_"$SRC_LAN"_model.vec -emb_file_dec KGE/$TGT_LAN/all_"$TGT_LAN"_model.vec -type word2vec -dict_file $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN_"default.vocab.pt -output_file $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN_"_emb
 
