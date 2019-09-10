@@ -47,7 +47,7 @@ KG-NMT currently consists of the following modules:
 3. KG-NMT workflows - they are responsible for creating both strategies described in our paper
 4. Entiy Linker - the component responsible for annotating the entities in the billingual parallel corpora, you can also replace for another EL system.
 
-### Structure
+### All datasets and models 
 
 All data pertaining to our publication can be found and downloaded via the command below
 ```
