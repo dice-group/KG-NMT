@@ -21,7 +21,11 @@ Please first run
 ./download_data.sh en de - it is for reproducing the results from our paper
 
 ```
+Please move the file OpenNMT-py/tools/embeddings_to_torch.py to the main folder OpenNMT-py/embeddings_to_torch.py
 
+```
+mv OpenNMT-py/tools/embeddings_to_torch.py OpenNMT-py/
+```
 ### Running steps 
 
 If you want to run the first strategy of KG-NMT which relies on the use of Knowledge Graph embeddigns with Entity Link task, you should run
