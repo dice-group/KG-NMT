@@ -76,7 +76,7 @@ if [ ! -f "$SOURCEDIR/all_"$SOURCEDIR".txt" ]; then
 	sed -i '' -e '/%/d' $SOURCEDIR/*_lc.txt
 	awk '{print $1, $2, $3;print $3, $2, $1}' < $SOURCEDIR/instance_types_"$1"_lc.txt > $SOURCEDIR/instance_types_"$1"_new_lc.txt
 	awk '{print $1, $2, $3;print $3, $2, $1}' < $SOURCEDIR/mappingbased_objects_"$1"_lc.txt > $SOURCEDIR/$SOURCEDIR/mappingbased_objects_"$1"_new_lc.txt 
-	awk '{printf "__label__"$1" "; for(i=2;i<=NF;i++){printf $i" "}print ""}' < $SOURCEDIR/labels_"$1"_lc.txt > $SOURCEDIR/labels_"$1"_new_lc.txt
+	awk '{printf "__label__"$1" "; for(i=3;i<=NF;i++){printf $i" "}print ""}' < $SOURCEDIR/labels_"$1"_lc.txt > $SOURCEDIR/labels_"$1"_new_lc.txt
 	rm -rf $SOURCEDIR/labels_"$1"_lc.txt
 	rm -rf $SOURCEDIR/instance_types_"$1"_lc.txt
 	rm -rf $SOURCEDIR/mappingbased_objects_"$1"_lc.txt
