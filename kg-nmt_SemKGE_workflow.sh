@@ -16,6 +16,7 @@ python3 $OPEN_NMT_PATH/preprocess.py \
     -train_tgt $TRAIN_PATH/training_data/train/target.$TGT_LAN \
     -valid_src $TRAIN_PATH/training_data/dev/source.$SRC_LAN \
     -valid_tgt $TRAIN_PATH/training_data/dev/target.$TGT_LAN \
+    -src_seq_length 80 -tgt_seq_length 80 \
     -save_data $TRAIN_PATH/preprocessed/training-data-$SRC_LAN-$TGT_LAN \
 
 # KGE 
@@ -33,7 +34,7 @@ python3 $OPEN_NMT_PATH/embeddings_to_torch.py -emb_file_enc KGE/$SRC_LAN/all_"$S
 # Training
 echo "Training"
 
-python3  $OPEN_NMT_PATH/train.py -data $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN" -save_model $TRAIN_PATH/models/"$SRC_LAN-$TGT_LAN"+graph -word_vec_size 500 -pre_word_vecs_enc $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.enc.pt -pre_word_vecs_dec $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.dec.pt -feat_merge sum -encoder_type brnn -decoder_type rnn -gpu_rank 0 -train_steps 410000 
+python3  $OPEN_NMT_PATH/train.py -data $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN" -save_model $TRAIN_PATH/models/"$SRC_LAN-$TGT_LAN"+graph -word_vec_size 500 -pre_word_vecs_enc $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.enc.pt -pre_word_vecs_dec $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.dec.pt -feat_merge concat -encoder_type brnn -decoder_type rnn -gpu_rank 0 -train_steps 410000 
 
 # Testing
 echo "Testing"
