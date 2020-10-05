@@ -71,12 +71,12 @@ if [ ! -f "$SOURCEDIR/all_"$1"_.txt" ]; then
 	sed -i '' -e '/%3f/d' $SOURCEDIR/*_lc.txt
 	sed -i '' -e '/%/d' $SOURCEDIR/*_lc.txt
 	awk '{print $1, $2, $3;print $3, $2, $1}' < $SOURCEDIR/instance_types_"$1"_lc.txt > $SOURCEDIR/instance_types_"$1"_new_lc.txt
-	awk '{print $1, $2, $3;print $3, $2, $1}' < $SOURCEDIR/mappingbased_objects_"$1"_lc.txt > $SOURCEDIR/$SOURCEDIR/mappingbased_objects_"$1"_new_lc.txt > 
+	awk '{print $1, $2, $3;print $3, $2, $1}' < $SOURCEDIR/mappingbased_objects_"$1"_lc.txt > $SOURCEDIR/mappingbased_objects_"$1"_new_lc.txt 
 	rm -rf $SOURCEDIR/instance_types_"$1"_lc.txt
 	rm -rf $SOURCEDIR/mappingbased_objects_"$1"_lc.txt
 	awk 'FNR==1{print ""}{print}' $SOURCEDIR/*_lc.txt > $SOURCEDIR/all_"$1".txt
 fi
 
 if [ ! -f "$SOURCEDIR/all_"$1"_model" ]; then
-	./fastText-0.9.1/fasttext cbow -input $SOURCEDIR/all_"$1"_.txt -output $SOURCEDIR/all_"$1"_model -dim 500 -thread 1 -ws 50 -loss hs 
+	./fastText-0.9.1/fasttext cbow -input $SOURCEDIR/all_"$1".txt -output $SOURCEDIR/all_"$1"_model -dim 500 -thread 1 -ws 50 -loss hs 
 fi

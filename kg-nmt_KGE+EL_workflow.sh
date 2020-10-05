@@ -1,8 +1,8 @@
 OPEN_NMT_PATH=$HOME/OpenNMT-py
-DATA_PATH=/data
+DATA_PATH=data
 SRC_LAN=en
 TGT_LAN=de
-TRAIN_PATH=$DATA_PATH/$SRC_LAN-$TGT_LAN/
+TRAIN_PATH=$DATA_PATH/$SRC_LAN-$TGT_LAN
 MODEL_PATH=$DATA_PATH/models
 TEST_PATH=$DATA_PATH/$SRC_LAN-$TGT_LAN/testsets
 
@@ -38,7 +38,7 @@ python3 $OPEN_NMT_PATH/preprocess.py \
 
 ./KGE_creation.sh de
 
-python3 embeddings_to_torch.py -emb_file_enc KGE/$SRC_LAN/all_"$SRC_LAN"_model.vec -emb_file_dec KGE/$TGT_LAN/all_"$TGT_LAN"_model.vec -type word2vec -dict_file $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN_"default.vocab.pt -output_file $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN_"_emb
+python3 embeddings_to_torch.py -emb_file_enc KGE/$SRC_LAN/all_"$SRC_LAN"_model.vec -emb_file_dec KGE/$TGT_LAN/all_"$TGT_LAN"_model.vec -type word2vec -dict_file $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN"default.vocab.pt -output_file $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb
 
 
 # Training
@@ -50,8 +50,8 @@ python3  train.py \
 	-layers 2 \ 
 	-rnn_size 500 \
 	-word_vec_size 500 \
-	-pre_word_vecs_enc $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN_"_emb.enc.pt \
-	-pre_word_vecs_dec $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN_"_emb.dec.pt \
+	-pre_word_vecs_enc $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.enc.pt \
+	-pre_word_vecs_dec $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb.dec.pt \
 	-feat_merge concat \
 	-encoder_type brnn \
 	-decoder_type brnn \
