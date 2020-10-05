@@ -9,7 +9,7 @@ This project aims at delivering a framework which uses knowledge graphs into Neu
 
 All data pertaining to our publication can be found and downloaded via the command below
 ```
-wget -r --no-parent https://hobbitdata.informatik.uni-leipzig.de/KG-NMT ;
+wget -r --no-parent https://hobbitdata.informatik.uni-leipzig.de/KG-NMT/ ;
 ```
 
 ### Required steps 
