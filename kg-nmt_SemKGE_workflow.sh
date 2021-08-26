@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 OPEN_NMT_PATH=OpenNMT-py
 DATA_PATH=data
 SRC_LAN=$1
