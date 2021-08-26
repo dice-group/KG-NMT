@@ -1,2 +1,4 @@
-spacy
+iopath
+torchvision==0.4.2
+spacy==2.1.6
 configargparse
