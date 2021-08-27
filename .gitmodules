@@ -1,3 +1,4 @@
 [submodule "OpenNMT-py"]
 	path = OpenNMT-py
 	url = https://github.com/nikit91/OpenNMT-py
+	branch = porque-dev
