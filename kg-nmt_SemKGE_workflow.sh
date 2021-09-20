@@ -26,12 +26,8 @@ python3 $OPEN_NMT_PATH/preprocess.py \
 echo "Pre-processing done"
 # KGE 
 echo "Generating KGE"
-if [ ! -d "fastText-0.9.1" ]; then
 ./SemKGE_creation.sh $SRC_LAN
-if
-if [ ! -d "fastText-0.9.1" ]; then
 ./SemKGE_creation.sh $TGT_LAN
-fi
 
 python3 $OPEN_NMT_PATH/embeddings_to_torch.py -emb_file_enc KGE/$SRC_LAN/all_"$SRC_LAN"_model.vec -emb_file_dec KGE/$TGT_LAN/all_"$TGT_LAN"_model.vec -type word2vec -dict_file $TRAIN_PATH/preprocessed/training-data-"$SRC_LAN-$TGT_LAN".vocab.pt -output_file $TRAIN_PATH/preprocessed/all_kge_"$SRC_LAN-$TGT_LAN"_emb
 
