@@ -22,7 +22,7 @@ python3 $OPEN_NMT_PATH/preprocess.py \
     -valid_src $TRAIN_PATH/training_data/dev/source.$SRC_LAN \
     -valid_tgt $TRAIN_PATH/training_data/dev/target.$TGT_LAN \
     -src_seq_length 80 -tgt_seq_length 80 \
-    -save_data $TRAIN_PATH/preprocessed/training-data-$SRC_LAN-$TGT_LAN \
+    -save_data $TRAIN_PATH/preprocessed/training-data-$SRC_LAN-$TGT_LAN
 echo "Pre-processing done"
 # KGE 
 echo "Generating KGE"
